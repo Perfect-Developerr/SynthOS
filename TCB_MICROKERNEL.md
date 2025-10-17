@@ -1,5 +1,26 @@
 # SynthOS — Documento Técnico: TCB y Microkernel Híbrido
 
+## 📑 Tabla de Contenidos
+
+1. [Objetivo](#1-objetivo)
+2. [Trusted Computing Base (TCB) mínimo](#2-trusted-computing-base-tcb-mínimo)
+   - [Componentes del TCB mínimo](#componentes-del-tcb-mínimo)
+   - [Principios de diseño](#principios-de-diseño)
+3. [Diseño del microkernel híbrido](#3-diseño-del-microkernel-híbrido)
+   - [3.1 Microkernel base](#31-microkernel-base)
+   - [3.2 Servicios de rendimiento en kernel-space](#32-servicios-de-rendimiento-en-kernel-space)
+4. [Módulos de Userland](#4-módulos-de-userland)
+   - [4.1 Sistema de archivos seguro y moderno](#41-sistema-de-archivos-seguro-y-moderno)
+   - [4.2 Compositor gráfico y Window Manager](#42-compositor-gráfico-y-window-manager)
+   - [4.3 WASM Runtime](#43-wasm-runtime)
+   - [4.4 Windows Compatibility Layer](#44-windows-compatibility-layer)
+   - [4.5 Linux Compatibility Layer](#45-linux-compatibility-layer)
+5. [ELY — Servicio IA local-first](#5-ely--servicio-ia-local-first)
+6. [Supply-Chain y actualización segura](#6-supply-chain-y-actualización-segura)
+7. [✅ Resultado](#-resultado)
+
+---
+
 ## 1. Objetivo
 
 Definir el **Trusted Computing Base (TCB) mínimo** y el **diseño del microkernel híbrido**, asegurando seguridad, rendimiento y extensibilidad para SynthOS.
@@ -10,8 +31,8 @@ Definir el **Trusted Computing Base (TCB) mínimo** y el **diseño del microkern
 
 **Objetivo:** Reducir la superficie de ataque y asegurar la integridad del sistema.
 
-**Componentes incluidos en el TCB mínimo:**
-- Microkernel base:
+### Componentes del TCB mínimo
+- **Microkernel base:**
   - Scheduling de procesos y threads
   - Inter-Process Communication (IPC) seguro y rápido
   - Protección de memoria (aislamiento de procesos y kernel)
@@ -21,7 +42,7 @@ Definir el **Trusted Computing Base (TCB) mínimo** y el **diseño del microkern
 - Controladores esenciales en kernel-space (GPU, audio, red)
 - Gestión de credenciales y claves (TPM / enclave)
 
-**Principios de diseño:**
+### Principios de diseño
 - **Least privilege:** cada módulo tiene solo los permisos necesarios
 - **Aislamiento completo:** procesos no confiables fuera del TCB
 - **Verificación formal:** técnicas inspiradas en seL4 para asegurar la base del microkernel
